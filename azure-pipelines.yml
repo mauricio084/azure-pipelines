@@ -11,7 +11,7 @@ variables:
    - name: process.clean
      value: false
 
-pool: Default
+pool: Azure Pipelines
 
 stages:
 - stage: Build
