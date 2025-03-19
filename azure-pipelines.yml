@@ -20,7 +20,7 @@ stages:
   - job: Build
     displayName: Build Maven Project
     steps:
-    - task: Maven@3
+    - task: Maven@4
       #env:
       #  JAVA_HOME: /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
       displayName: 'Maven Package'
