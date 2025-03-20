@@ -21,14 +21,14 @@ stages:
     displayName: Build Maven Project
     steps:
     - task: Maven@4
-      #env:
-      #  JAVA_HOME: /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
       displayName: 'Maven Package'
       inputs:
         mavenPomFile: 'pom.xml'
         goals: 'package'
         javaHomeOption: 'JDKVersion'
         mavenVersionOption: 'Default'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
       inputs:
