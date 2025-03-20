@@ -47,5 +47,5 @@ stages:
         azureSubscription: 'Suscripción 1(419482ac-f59e-4e6f-9a74-bcb5ba69c968)'
         appType: 'webAppLinux'
         WebAppName: 'RestAPIU-Q'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.jar'        
         DeploymentTypeLinux: 'oneDeploy'
