@@ -21,7 +21,7 @@ stages:
     displayName: Build Maven Project
     steps:
     - task: Maven@4
-      displayName: 'Maven Package'
+      displayName: 'Compilación'
       inputs:
         mavenPomFile: 'pom.xml'
         goals: 'package'
@@ -30,12 +30,22 @@ stages:
         publishJUnitResults: true
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
     - task: CopyFiles@2
-      displayName: 'Copy Files to artifact staging directory'
+      displayName: 'Copiando archivos al directorio de staging'
       inputs:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
         Contents: '**/target/*.?(war|jar)'
         TargetFolder: $(Build.ArtifactStagingDirectory)
     - task: PublishBuildArtifacts@1
+      displayName: 'Publicación'
       inputs:
         pathToPublish: $(Build.ArtifactStagingDirectory)
         artifactName: SampleSpringBootBuild
+    - task: AzureRmWebAppDeployment@5
+      displayName: 'Despliegue'
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Suscripción 1(419482ac-f59e-4e6f-9a74-bcb5ba69c968)'
+        appType: 'webAppLinux'
+        WebAppName: 'RestAPIU-Q'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+        DeploymentTypeLinux: 'oneDeploy'
