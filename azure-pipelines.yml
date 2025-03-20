@@ -47,5 +47,8 @@ stages:
         azureSubscription: 'Suscripción 1(419482ac-f59e-4e6f-9a74-bcb5ba69c968)'
         appType: 'webAppLinux'
         WebAppName: 'RestAPIU-Q'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.jar'        
-        DeploymentTypeLinux: 'oneDeploy'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.jar'
+        RuntimeStack: 'JAVA:17-java17'
+        StartupCommand: 'java -jar azure-pipelines-0.0.1-SNAPSHOT.jar'
+        DeploymentTypeLinux: 'oneDeploy'    
+    
